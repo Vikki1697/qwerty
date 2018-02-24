@@ -41,19 +41,21 @@
 			<ul id="side-menu">
 				<li id="logo"><img src="img/logo.png" width="150" height="150" alt="Apple"></li>
 				<button id="button" class="menu-toggle"></button>
-	            <li><button id="size-p" class="sidebar item-off btn-side-size">Размер шрифта</button></li>
-	            	<input id="inpt-size" class="sub-list-s item-off" type="text" size="2">
-	            	<button id="btn-size" class="sub-list-s item-off">Изменить</button>
-	            <li><button id="background-p" class="sidebar item-off btn-side-color">Цвет фона</button></li>
-	            	<li class="sub-list-c item-off"><input name="color" value="1" type="radio" class="rdbtn-color" checked onclick="setBackground()">White</li>
-	            	<li class="sub-list-c item-off"><input name="color" value="2" type="radio" class="rdbtn-color" onclick="setBackground()">Red</li>
-	            	<li class="sub-list-c item-off"><input name="color" value="3" type="radio" class="rdbtn-color" onclick="setBackground()">Blue</li>
-	            	<li class="sub-list-c item-off"><input name="color" value="4" type="radio" class="rdbtn-color" onclick="setBackground()">Green</li>
-	            <li><button id="font-p" class="sidebar item-off btn-side-font">Шрифт</button></li>
-	            	<li class="sub-list item-off"><input name="font" value="1" type="radio" class="rdbtn" checked onclick="setFont()">Arial</li>
-	            	<li class="sub-list item-off"><input name="font" value="2" type="radio" class="rdbtn" onclick="setFont()">TimesNewRoman</li>
-	            	<li class="sub-list item-off"><input name="font" value="3" type="radio" class="rdbtn" onclick="setFont()">CourierNew</li>
-	            <li><button id="delete-p" class="sidebar item-off btn-side-del">Удалить абзац</button></li>
+				<div class="sub-menu" hidden="true">
+		            <li><button id="size-p" class="sidebar item-off btn-side-size">Размер шрифта</button></li>
+		            	<input id="inpt-size" class="sub-list-s item-off" type="text" size="2" onkeyup="isCorrect(this)">
+		            	<button id="btn-size" class="sub-list-s item-off">Изменить</button>
+		            <li><button id="background-p" class="sidebar item-off btn-side-color">Цвет фона</button></li>
+		            	<li class="sub-list-c item-off"><input name="color" value="1" type="radio" class="rdbtn-color" checked onclick="setBackground()">White</li>
+		            	<li class="sub-list-c item-off"><input name="color" value="2" type="radio" class="rdbtn-color" onclick="setBackground()">Red</li>
+		            	<li class="sub-list-c item-off"><input name="color" value="3" type="radio" class="rdbtn-color" onclick="setBackground()">Blue</li>
+		            	<li class="sub-list-c item-off"><input name="color" value="4" type="radio" class="rdbtn-color" onclick="setBackground()">Green</li>
+		            <li><button id="font-p" class="sidebar item-off btn-side-font">Шрифт</button></li>
+		            	<li class="sub-list item-off"><input name="font" value="1" type="radio" class="rdbtn" checked onclick="setFont()">Arial</li>
+		            	<li class="sub-list item-off"><input name="font" value="2" type="radio" class="rdbtn" onclick="setFont()">TimesNewRoman</li>
+		            	<li class="sub-list item-off"><input name="font" value="3" type="radio" class="rdbtn" onclick="setFont()">CourierNew</li>
+		            <li><button id="delete-p" class="sidebar item-off btn-side-del">Удалить абзац</button></li>
+	            </div>
         	</ul>
 		<!--SideBar:End-->
 		</div>
