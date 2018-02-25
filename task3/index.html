@@ -1,0 +1,92 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=0.6">
+	    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Korotenko Viktoriya</title>
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/responsive.css">
+	<head>
+	<body>
+		<div id="header">
+		<!--Header:Begin-->
+			<ul id="main-menu">
+	            <li><a href="#company">О компании</a></li>
+	            <li><a href="#services">Услуги</a></li>
+	            <li><a href="#team">Сотрудники</a></li>
+	            <li><a href="#contacts">Контакты</a></li>
+        	</ul>
+		<!--Header:End-->
+		</div>
+
+		<div id="sub-header">
+		<!--Sub-Header:Begin-->
+			<div id="users-data" hidden="true">
+				<p id="wlcm-user"></p>
+				<p><button type="submit" id="logout">Выйти</button></p>
+			</div>
+			<div id="register-form">
+				<p id="login-label">Регистрация</p>
+				<p>Email: <input type="email" name="login" id="register_login"></p>
+				<p>Пароль: <input type="password" name="pass" id="register_password"></p>
+				<p><button type="submit" id="register">Зарегистрироваться<span class="icon icon-reg"></span></button></p>
+			</div>
+			<div id="login-form">
+				<p id="login-label">Вход на сайт</p>
+				<p>Email: <input type="email" name="login" id="auth_login"></p>
+				<p>Пароль: <input type="password" name="pass" id="auth_password"></p>
+				<p><button type="submit" id="auth">Вход<span class="icon icon-in"></span></button></p>
+			</div>
+		<!--Sub-Header:End-->
+		</div>
+		<div id="side-bar">
+		<!--SideBar:Begin-->
+			<ul id="side-menu">
+				<li id="logo"><img src="img/logo.png" width="150" height="150" alt="Apple"></li>
+				<div id="side-bar-menu" hidden="true">
+					<button id="button" class="menu-toggle"></button>
+					<div class="sub-menu" hidden="true">
+			            <li><button id="size-p" class="sidebar item-off btn-side-size">Размер шрифта</button></li>
+			            	<input id="inpt-size" class="sub-list-s item-off" type="text" size="2" onkeyup="isCorrect(this)">
+			            	<button id="btn-size" class="sub-list-s item-off">Изменить</button>
+			            <li><button id="background-p" class="sidebar item-off btn-side-color">Цвет фона</button></li>
+			            	<li class="sub-list-c item-off"><input name="color" value="1" type="radio" class="rdbtn-color" checked onclick="setBackground()">White</li>
+			            	<li class="sub-list-c item-off"><input name="color" value="2" type="radio" class="rdbtn-color" onclick="setBackground()">Red</li>
+			            	<li class="sub-list-c item-off"><input name="color" value="3" type="radio" class="rdbtn-color" onclick="setBackground()">Blue</li>
+			            	<li class="sub-list-c item-off"><input name="color" value="4" type="radio" class="rdbtn-color" onclick="setBackground()">Green</li>
+			            <li><button id="font-p" class="sidebar item-off btn-side-font">Шрифт</button></li>
+			            	<li class="sub-list item-off"><input name="font" value="1" type="radio" class="rdbtn" checked onclick="setFont()">Arial</li>
+			            	<li class="sub-list item-off"><input name="font" value="2" type="radio" class="rdbtn" onclick="setFont()">TimesNewRoman</li>
+			            	<li class="sub-list item-off"><input name="font" value="3" type="radio" class="rdbtn" onclick="setFont()">CourierNew</li>
+			            <li><button id="delete-p" class="sidebar item-off btn-side-del">Удалить абзац</button></li>
+		            </div>
+		        </div>
+        	</ul>
+		<!--SideBar:End-->
+		</div>
+
+		<div id="content">
+		<!--Content:Begin-->
+			<h1>Lorem Ipsum</h1>
+			<p id="p1" class="content-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed leo et eros auctor vehicula. Pellentesque mollis eros risus, congue gravida ipsum iaculis dapibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque maximus, enim quis posuere efficitur, neque velit pretium orci, vel lacinia nisl nibh vel mauris. In lacinia nec tellus id euismod. Suspendisse pretium vestibulum sapien, eu venenatis ligula dictum eget. Ut sagittis, sem sed ullamcorper lacinia, ligula eros consequat felis, nec consectetur ipsum ligula id lacus. Donec nec urna ultrices, accumsan orci in, ornare ligula. Integer tempus eros ut tellus fringilla, et tincidunt augue posuere.</p>
+
+			<p id="p2" class="content-p">Mauris est eros, efficitur ac eros id, pulvinar scelerisque diam. Integer vestibulum nibh eu tempus pellentesque. Cras aliquet ultrices suscipit. Vestibulum in auctor dui. Suspendisse dignissim iaculis sapien at hendrerit. Maecenas risus purus, faucibus et vehicula quis, elementum et mi. Vivamus a euismod erat. Nam pulvinar nisi eget augue porttitor, ut interdum lorem facilisis. Quisque urna nunc, imperdiet ac pharetra et, accumsan vitae sapien. Vestibulum sodales dapibus erat, non fermentum ipsum porttitor id. Aenean gravida erat sit amet nisl condimentum aliquam. Ut lectus orci, facilisis non varius eu, ultricies posuere tortor.</p>
+
+			<p id="p3" class="content-p">Ut turpis enim, vestibulum at cursus at, sollicitudin a ante. Donec accumsan risus quis ligula semper, vitae maximus felis porta. Donec facilisis congue dui, a dapibus orci feugiat in. Etiam sodales ipsum at nibh posuere mollis. Sed congue vestibulum vestibulum. Mauris suscipit mi sollicitudin, viverra magna eget, dictum magna. Sed consequat egestas diam, in aliquam mi consectetur eu.</p>
+
+			<p id="p4" class="content-p">Nunc orci turpis, feugiat ac vulputate at, lacinia vel erat. Morbi vitae aliquam sem, sed tristique metus. Fusce tortor eros, tincidunt nec cursus non, mattis et nunc. Nam odio lectus, auctor ut pellentesque vel, finibus ac lorem. Donec mollis nibh ac finibus iaculis. Duis placerat pellentesque diam, at finibus dolor hendrerit vitae. Vivamus a ex ut urna ornare semper. Fusce gravida ac magna nec dictum. Nullam lacus lorem, laoreet tristique mi sit amet, finibus porttitor mauris. Fusce a nibh non augue ultricies lacinia at maximus nibh. Curabitur rutrum dapibus faucibus. Fusce convallis mattis est, et suscipit lectus. Curabitur eu turpis ac ante gravida dictum id eget mauris.</p>
+
+			<p id="p5" class="content-p">Etiam eu ornare ligula, mollis bibendum ligula. Mauris faucibus laoreet quam suscipit tincidunt. Donec convallis lacinia posuere. Aliquam lacus lectus, bibendum non nisl eu, semper finibus lectus. Cras dictum finibus felis, nec gravida ipsum rhoncus nec. Duis fermentum eros nec massa ornare molestie in a nulla. Duis ac euismod ante. Sed ac enim lorem. Curabitur ut convallis mauris. Phasellus eu lorem ligula. Quisque volutpat erat quis interdum ultricies. Proin scelerisque dignissim ipsum eu congue.</p>
+		<!--Content:End-->
+		</div>
+
+		<div id="footer">
+		<!--Footer:Begin-->
+			Viktoria Korotenko © 2018
+		<!--Footer:End-->
+		</div>		
+		<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+		<script src="js/action.js"></script>
+	</body>
+</html>
