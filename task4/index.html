@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Korotenko Viktoriya</title>
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+  </head>
+  <body>
+    <div id="header"></div>
+    <div id="sub-header"></div>
+    <div id="side-bar"></div>
+    <div id="content"></div>
+    <div id="footer"></div>
+    
+    <script type="text/babel">
+      var config = {
+        apiKey: "AIzaSyAyp7gFZxldbUzaS48x0MGaJosnod8QQdw",
+        authDomain: "qwerty-c09bd.firebaseapp.com",
+        databaseURL: "https://qwerty-c09bd.firebaseio.com",
+        projectId: "qwerty-c09bd",
+        storageBucket: "qwerty-c09bd.appspot.com",
+        messagingSenderId: "939455184669"
+      };
+      firebase.initializeApp(config);
+
+      const header = document.getElementById('header');
+      const subheader = document.getElementById('sub-header');
+      const sidebar = document.getElementById('side-bar');
+      const content = document.getElementById('content');
+      const footer = document.getElementById('footer');
+
+      class Header extends React.Component {
+        render() {
+          return (
+          <ul id="main-menu">
+            <li><a href="#company">О компании</a></li>
+            <li><a href="#services">Услуги</a></li>
+            <li><a href="#team">Сотрудники</a></li>
+            <li><a href="#contacts">Контакты</a></li>
+          </ul>
+          ); 
+        }
+      };
+
+      class SubHeader extends React.Component{
+        loginBtn(){
+          const email = document.getElementById('auth_login').value;
+          const pass = document.getElementById('auth_password').value;
+          const auth = firebase.auth();
+
+          const promise = auth.signInWithEmailAndPassword(email, pass);
+          promise.catch(e=>console.log(e.message));
+        };
+        registerBtn(){
+          alert(firebase.auth());
+          const email = document.getElementById('register_login').value;
+          const pass = document.getElementById('register_password').value;
+          const auth = firebase.auth();
+
+          const promise = auth.createUserWithEmailAndPassword(email, pass);
+          promise.catch(e=>console.log(e.message));
+        };
+        logoutBtn(){
+          firebase.auth().signOut();
+        };
+        render() {
+          return (
+            <div>
+              <div id="users-data" hidden="true">
+                <p id="wlcm-user"></p>
+                <p><button type="submit" onClick={this.logoutBtn} id="logout">Выйти</button></p>
+              </div>
+              <div id="register-form">
+                <p id="login-label">Регистрация</p>
+                <p>Email: <input type="email" name="login" id="register_login"/></p>
+                <p>Пароль: <input type="password" name="pass" id="register_password"/></p>
+                <p><button type="submit" onClick={this.registerBtn} id="register">Зарегистрироваться<span className="icon icon-reg"></span></button></p>
+              </div>
+              <div id="login-form">
+                <p id="login-label">Вход на сайт</p>
+                <p>Email: <input type="email" name="login" id="auth_login"/></p>
+                <p>Пароль: <input type="password" name="pass" id="auth_password"/></p>
+                <p><button type="submit" onClick={this.loginBtn} id="auth">Вход<span className="icon icon-in"></span></button></p>
+              </div>
+            </div>
+          );
+        }
+      };
+
+      class SideBar extends React.Component{
+        //Show or Hide sidebar
+        mainBtn() {
+            var elem = document.getElementsByClassName('sidebar');
+            setVisibility(elem, 'sidebar item-on btn-side-size');
+            var subMenu = document.getElementsByClassName('sub-menu');
+            if (subMenu[0].hidden){
+              subMenu[0].hidden = false;
+            } else {
+              subMenu[0].hidden = true;
+            }
+          };
+        //Show or Hide font-list
+        fontBtn(){
+          var elem = document.getElementsByClassName('sub-list');
+          setVisibility(elem, 'sub-list item-on');
+        }
+        //Show or Hide color-list
+        colorBtn(){
+          var elem = document.getElementsByClassName('sub-list-c');
+          setVisibility(elem, 'sub-list-c item-on');
+        }
+        //Show or Hide size-list
+        sizeBtn(){
+          var elem = document.getElementsByClassName('sub-list-s');
+          setVisibility(elem, 'sub-list-s item-on');
+        }
+        //Show or Hide function
+        setVisibility(elem, options){
+          var classElem = elem[0].getAttribute('class');
+          if (classElem == options){
+            for (var i = 0; i < elem.length; i++) {
+              elem[i].className = elem[i].className.replace('item-on', 'item-off');
+            }
+          }else{
+            for (var i = 0; i < elem.length; i++) {
+              elem[i].className = elem[i].className.replace('item-off', 'item-on');
+            }
+          }
+        }
+        //Delete last <p>
+        deleteBtn(){
+          var p = document.getElementsByClassName('content-p');
+          var cnt = p.length; 
+          p[cnt-1].remove();
+        }
+        //Change font-size
+        changeFontSize(){
+          var inpt = document.getElementById('inpt-size').value;
+          var p = document.getElementsByClassName('content-p');
+          
+          if (parseInt(inpt)<24 && parseInt(inpt)>7){
+            for (var i = 0; i < p.length; i++) {
+              p[i].style.fontSize = inpt+'px';
+            }
+          }else{
+            alert('Ошибка!');
+          } 
+        }
+        //setFont
+        setFont(){
+          var elem = document.getElementsByClassName('rdbtn');
+          if (elem[0].checked){
+            changeFont('Arial');
+          } else if (elem[1].checked){
+            changeFont('Times New Roman');
+          } else if (elem[2].checked){
+            changeFont('Courier New');
+          }
+        }
+        //changeFont
+        changeFont(font){
+          var p = document.getElementsByClassName('content-p');
+          for (var i = 0; i < p.length; i++) {
+            p[i].style.fontFamily = font;
+          }
+        }
+        //setBackground
+        setBackground(){
+          var elem = document.getElementsByClassName('rdbtn-color');
+          if (elem[0].checked){
+            changeBackground('White');
+          } else if (elem[1].checked){
+            changeBackground('Red');
+          } else if (elem[2].checked){
+            changeBackground('Blue');
+          } else if (elem[3].checked){
+            changeBackground('Green');
+          }
+        }
+        //changeBackground
+        changeBackground(color) {
+          var p = document.getElementsByClassName('content-p');
+          for (var i = 0; i < p.length; i++) {
+            p[i].style.background = color;
+          }
+        }
+        //isCorrect
+        isCorrect(inpt){
+          var val = inpt.value;
+          val = val.replace(/[^\d]/g, '');
+          document.getElementById('inpt-size').value = val;
+        }
+        render() {
+          return (
+            <ul id="side-menu">
+              <li id="logo"><img src="img/logo.png" width="150" height="150" alt="Apple"/></li>
+              <div id="side-bar-menu" hidden="true">
+                <button id="button" onclick={this.mainBtn} className="menu-toggle" hidden="true"></button>
+                <div className="sub-menu">
+                  <li><button id="size-p" onclick={this.sizeBtn} className="sidebar item-off btn-side-size">Размер шрифта</button></li>
+                    <input id="inpt-size" className="sub-list-s item-off" type="text" size="2" onkeyup={this.isCorrect}/>
+                    <button id="btn-size" onclick={this.changeFontSize} className="sub-list-s item-off btn-side-size">Изменить</button>
+                  <li><button id="background-p" onclick={this.colorBtn} className="sidebar item-off btn-side-color">Цвет фона</button></li>
+                    <li className="sub-list-c item-off"><input name="color" value="1" type="radio" className="rdbtn-color" defaultChecked  onclick={this.setBackground} />White</li>
+                    <li className="sub-list-c item-off"><input name="color" value="2" type="radio" className="rdbtn-color" onclick={this.setBackground} />Red</li>
+                    <li className="sub-list-c item-off"><input name="color" value="3" type="radio" className="rdbtn-color" onclick={this.setBackground} />Blue</li>
+                    <li className="sub-list-c item-off"><input name="color" value="4" type="radio" className="rdbtn-color" onclick={this.setBackground} />Green</li>
+                  <li><button id="font-p" onclick={this.fontBtn} className="sidebar item-off btn-side-font">Шрифт</button></li>
+                    <li className="sub-list item-off"><input name="font" value="1" type="radio" className="rdbtn" onclick={this.setFont} defaultChecked/>Arial</li>
+                    <li className="sub-list item-off"><input name="font" value="2" type="radio" className="rdbtn" onclick={this.setFont} />TimesNewRoman</li>
+                    <li className="sub-list item-off"><input name="font" value="3" type="radio" className="rdbtn" onclick={this.setFont} />CourierNew</li>
+                  <li><button id="delete-p" onclick={this.deleteBtn} className="sidebar item-off btn-side-del">Удалить абзац</button></li>
+                </div>
+              </div>
+            </ul>
+          );
+        }
+      };
+
+      class Content extends React.Component{
+        render() {
+          return(
+            <div>
+              <h1>Lorem Ipsum</h1>
+              <p id="p1" className="content-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed leo et eros auctor vehicula. Pellentesque mollis eros risus, congue gravida ipsum iaculis dapibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque maximus, enim quis posuere efficitur, neque velit pretium orci, vel lacinia nisl nibh vel mauris. In lacinia nec tellus id euismod. Suspendisse pretium vestibulum sapien, eu venenatis ligula dictum eget. Ut sagittis, sem sed ullamcorper lacinia, ligula eros consequat felis, nec consectetur ipsum ligula id lacus. Donec nec urna ultrices, accumsan orci in, ornare ligula. Integer tempus eros ut tellus fringilla, et tincidunt augue posuere.</p>
+
+              <p id="p2" className="content-p">Mauris est eros, efficitur ac eros id, pulvinar scelerisque diam. Integer vestibulum nibh eu tempus pellentesque. Cras aliquet ultrices suscipit. Vestibulum in auctor dui. Suspendisse dignissim iaculis sapien at hendrerit. Maecenas risus purus, faucibus et vehicula quis, elementum et mi. Vivamus a euismod erat. Nam pulvinar nisi eget augue porttitor, ut interdum lorem facilisis. Quisque urna nunc, imperdiet ac pharetra et, accumsan vitae sapien. Vestibulum sodales dapibus erat, non fermentum ipsum porttitor id. Aenean gravida erat sit amet nisl condimentum aliquam. Ut lectus orci, facilisis non varius eu, ultricies posuere tortor.</p>
+
+              <p id="p3" className="content-p">Ut turpis enim, vestibulum at cursus at, sollicitudin a ante. Donec accumsan risus quis ligula semper, vitae maximus felis porta. Donec facilisis congue dui, a dapibus orci feugiat in. Etiam sodales ipsum at nibh posuere mollis. Sed congue vestibulum vestibulum. Mauris suscipit mi sollicitudin, viverra magna eget, dictum magna. Sed consequat egestas diam, in aliquam mi consectetur eu.</p>
+
+              <p id="p4" className="content-p">Nunc orci turpis, feugiat ac vulputate at, lacinia vel erat. Morbi vitae aliquam sem, sed tristique metus. Fusce tortor eros, tincidunt nec cursus non, mattis et nunc. Nam odio lectus, auctor ut pellentesque vel, finibus ac lorem. Donec mollis nibh ac finibus iaculis. Duis placerat pellentesque diam, at finibus dolor hendrerit vitae. Vivamus a ex ut urna ornare semper. Fusce gravida ac magna nec dictum. Nullam lacus lorem, laoreet tristique mi sit amet, finibus porttitor mauris. Fusce a nibh non augue ultricies lacinia at maximus nibh. Curabitur rutrum dapibus faucibus. Fusce convallis mattis est, et suscipit lectus. Curabitur eu turpis ac ante gravida dictum id eget mauris.</p>
+
+              <p id="p5" className="content-p">Etiam eu ornare ligula, mollis bibendum ligula. Mauris faucibus laoreet quam suscipit tincidunt. Donec convallis lacinia posuere. Aliquam lacus lectus, bibendum non nisl eu, semper finibus lectus. Cras dictum finibus felis, nec gravida ipsum rhoncus nec. Duis fermentum eros nec massa ornare molestie in a nulla. Duis ac euismod ante. Sed ac enim lorem. Curabitur ut convallis mauris. Phasellus eu lorem ligula. Quisque volutpat erat quis interdum ultricies. Proin scelerisque dignissim ipsum eu congue.</p>
+            </div>
+          );
+        }
+      }
+
+      class Footer extends React.Component{
+        render(){
+          return(<div>Viktoria Korotenko © 2018</div>);
+        }
+      }
+
+      ReactDOM.render(<Header />, header);
+      ReactDOM.render(<SubHeader />, subheader);
+      ReactDOM.render(<SideBar />, sidebar);
+      ReactDOM.render(<Content />, content);
+      ReactDOM.render(<Footer />, footer);
+
+      firebase.auth().onAuthStateChanged(firebaseUser =>{
+        if (firebaseUser) {
+          console.log(firebaseUser);
+          //hide register and auth
+          document.getElementById('register-form').hidden = true;                           //work
+          document.getElementById('login-form').hidden = true;                              //work
+          document.getElementById('users-data').hidden = false;                             //work
+          document.getElementById('side-bar-menu').hidden = false;                          //not work
+          document.getElementById('wlcm-user').innerHTML = "Hello, " + firebaseUser.email;  //work
+        } else{
+          console.log('not logged in');
+          document.getElementById('register-form').hidden = false;                          //work
+          document.getElementById('login-form').hidden = false;                             //work
+          document.getElementById('users-data').hidden = true;                              //work
+          document.getElementById('side-bar-menu').hidden = true;                           //not work
+          document.getElementById('wlcm-user').innerHTML = "";                              //work
+        }
+      })
+    </script>
+  </body>
+</html>
