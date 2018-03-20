@@ -1,46 +1,46 @@
 body {
     padding: 10px;
-    font-family: "Arial", sans-serif;
-    font-size: 14px;
-    line-height: 1.4;
+    font-family: "Arial", sans-serif;       /*Шрифт для всей страницы*/
+    font-size: 14px;                        /*Размер шрифта для всей страницы*/
+    line-height: 1.4;                       /*Высота строки*/
 }
 html { 
 	position:relative; 
 	min-height:100%;
 }
 #logo{
-	text-align: center;
-	border: 1px solid #e5e5e5;
-	margin-bottom: 5px;	
+	text-align: center;                    /*Лого по центру блока*/
+	border: 1px solid #e5e5e5;             /*Рамка вокруг лого*/
+	margin-bottom: 5px;                    /*Отступ внутри рамки с лого*/
 }
 
 /*Header:Begin*/
 #main-menu {
-	text-align: center;
+	text-align: center;                    
 	font-size: 20px;
     margin: 0;
     padding: 0;
-    list-style: none;
+    list-style: none;                       /*Убрать "точки" в списке*/
     background: #f5f5f5;
     border: 1px solid #e5e5e5;
 }
 
 #main-menu li {
-    display: inline-block;
+    display: inline-block;                  /*Пункт меню в строку*/
     margin-right: -4px;
 }
 
 #main-menu a {
-	display: block;
+	display: block;                        /*Пункт меню в виде блока*/
 	margin-left: -1px;
 	padding: 8px 10px;
     color: #0088cc;
     background-color: #f5f5f5;
-    border-left: 1px solid #e5e5e5;
-    border-right: 1px solid #e5e5e5; 
+    border-left: 1px solid #e5e5e5;         /*Левая граница*/
+    border-right: 1px solid #e5e5e5;        /*Правая граница*/
 }
-#main-menu a:hover {
-    background: #eeeeee;
+#main-menu a:hover {                        /*Меняем внешний вид при наведении курсора на кнопку*/
+    background: #eeeeee;                    
     text-decoration: none; 
 }
 /*Header:End*/
@@ -48,7 +48,7 @@ html {
 /*Login:Begin*/
 #sub-header{
 	text-align: right;
-    list-style: none;
+    list-style: none;                       /*Убрать "точки" в списке*/
     margin-top: 5px;
     padding-bottom: 5px;
     background: #f5f5f5;
@@ -91,7 +91,7 @@ html {
     border-radius: 5px;
     cursor: pointer;
 }
-.icon {
+.icon {                                     /*Иконки для формы входа и регистрации*/
     display: inline-block;
     width: 15px;
     height: 15px;
@@ -118,7 +118,7 @@ html {
 .menu-toggle{
     width: 180px;
 }
-.menu-toggle:before { 
+.menu-toggle:before {                       /*Внещний вид кнопки бокового меню*/
   content: "≡"; /* символ */
   font: 2em "arial";
 }
@@ -144,7 +144,7 @@ html {
     border: 1px solid #e5e5e5;
 }
 
-#side-menu a:hover {
+#side-menu a:hover {                        /*Меняем внешний вид при наведении курсора на кнопку*/
     background: #f5f5f5;
 }
 
@@ -158,8 +158,8 @@ html {
     width: 180px;
 }
 .btn-side-size{
-    -webkit-transition-duration: 0.4s;  /*delay for 0.4s*/
-    background-color: grey; /* color */
+    -webkit-transition-duration: 0.4s;  /*задержка изменения цвета кнопки при наведении на 0.4s*/
+    background-color: grey; /* цвет */
     width: 180px;
     border: 2px solid grey;
     color: white;
@@ -172,11 +172,11 @@ html {
 .btn-side-size:hover {
     background-color: white;
     color: black;
-    border: 2px solid grey; /* color */
+    border: 2px solid grey; /* цвет */
 }
 .btn-side-color{
-    -webkit-transition-duration: 0.4s;  /*delay for 0.4s*/
-    background-color: blue; /* color */
+    -webkit-transition-duration: 0.4s;  /*задержка изменения цвета кнопки при наведении на 0.4s*/
+    background-color: blue; /* цвет */
     width: 180px;
     border: 2px solid blue;
     color: white;
@@ -189,11 +189,11 @@ html {
 .btn-side-color:hover {
     background-color: white;
     color: black;
-    border: 2px solid blue; /* color */
+    border: 2px solid blue; /* цвет */
 }
 .btn-side-font{
-    -webkit-transition-duration: 0.4s;  /*delay for 0.4s*/
-    background-color: green; /* color */
+    -webkit-transition-duration: 0.4s;  /*задержка изменения цвета кнопки при наведении на 0.4s*/
+    background-color: green; /* цвет */
     width: 180px;
     border: 2px solid green;
     color: white;
@@ -206,11 +206,11 @@ html {
 .btn-side-font:hover {
     background-color: white;
     color: black;
-    border: 2px solid green; /* color */
+    border: 2px solid green; /* цвет */
 }
 .btn-side-del{
-    -webkit-transition-duration: 0.4s;  /*delay for 0.4s*/
-    background-color: red; /* color */
+    -webkit-transition-duration: 0.4s;  /*задержка изменения цвета кнопки при наведении на 0.4s*/
+    background-color: red; /* цвет */
     width: 180px;
     border: 2px solid red;
     color: white;
@@ -223,7 +223,7 @@ html {
 .btn-side-del:hover {
     background-color: white;
     color: black;
-    border: 2px solid red; /* color */
+    border: 2px solid red; /* цвет */
 }
 /*SideBar:End*/
 
@@ -260,6 +260,6 @@ html {
 	width: 100%;
 	height: 30px;
 	background: #f5f5f5;
-    border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;      /* верхняя граница футера */
 }
 /*Footer:End*/

@@ -94,7 +94,7 @@
       };
 
       class SideBar extends React.Component{
-        //Show or Hide sidebar
+        //Показать или Скрыть sidebar
         mainBtn() {
             var elem = document.getElementsByClassName('sidebar');
             setVisibility(elem, 'sidebar item-on btn-side-size');
@@ -105,22 +105,22 @@
               subMenu[0].hidden = true;
             }
           };
-        //Show or Hide font-list
+        //Показать или Скрыть Список Шрифтов
         fontBtn(){
           var elem = document.getElementsByClassName('sub-list');
           setVisibility(elem, 'sub-list item-on');
         }
-        //Show or Hide color-list
+        //Показать или Скрыть Список Цветов
         colorBtn(){
           var elem = document.getElementsByClassName('sub-list-c');
           setVisibility(elem, 'sub-list-c item-on');
         }
-        //Show or Hide size-list
+        //Показать или Скрыть Список Размера Шрифта
         sizeBtn(){
           var elem = document.getElementsByClassName('sub-list-s');
           setVisibility(elem, 'sub-list-s item-on');
         }
-        //Show or Hide function
+        //Показать или Скрыть
         setVisibility(elem, options){
           var classElem = elem[0].getAttribute('class');
           if (classElem == options){
@@ -133,13 +133,13 @@
             }
           }
         }
-        //Delete last <p>
+        //Удалить последний параграф <p>
         deleteBtn(){
           var p = document.getElementsByClassName('content-p');
           var cnt = p.length; 
           p[cnt-1].remove();
         }
-        //Change font-size
+        //Изменить размер шрифта
         changeFontSize(){
           var inpt = document.getElementById('inpt-size').value;
           var p = document.getElementsByClassName('content-p');
@@ -152,7 +152,7 @@
             alert('Ошибка!');
           } 
         }
-        //setFont
+        //Задать шрифт
         setFont(){
           var elem = document.getElementsByClassName('rdbtn');
           if (elem[0].checked){
@@ -163,14 +163,14 @@
             changeFont('Courier New');
           }
         }
-        //changeFont
+        //Изменить шрифт
         changeFont(font){
           var p = document.getElementsByClassName('content-p');
           for (var i = 0; i < p.length; i++) {
             p[i].style.fontFamily = font;
           }
         }
-        //setBackground
+        //Поменять цвет фона
         setBackground(){
           var elem = document.getElementsByClassName('rdbtn-color');
           if (elem[0].checked){
@@ -183,14 +183,14 @@
             changeBackground('Green');
           }
         }
-        //changeBackground
+        //Изменить цвет
         changeBackground(color) {
           var p = document.getElementsByClassName('content-p');
           for (var i = 0; i < p.length; i++) {
             p[i].style.background = color;
           }
         }
-        //isCorrect
+        //Защита от ввода дробных цифр и букв
         isCorrect(inpt){
           var val = inpt.value;
           val = val.replace(/[^\d]/g, '');
